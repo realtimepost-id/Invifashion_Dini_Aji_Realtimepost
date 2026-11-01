@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Admin · Undangan Aji & Dini</title><link rel="stylesheet" href="admin.css"></head>
+<body>
+<div id="login" class="box"><h1>Admin Undangan</h1><p>Aji &amp; Dini</p>
+  <input id="pw" type="password" placeholder="Password admin"><button id="loginBtn">Masuk</button><small id="err"></small></div>
+
+<div id="app" hidden>
+  <header><h1>Dashboard RSVP</h1><div><button id="refresh">⟳ Muat ulang</button><button id="csv">⬇ Export CSV (Excel/Sheets)</button><button id="out">Keluar</button></div></header>
+  <small id="mode"></small>
+  <div class="stats"><div><b id="sTotal">0</b><span>Respon</span></div><div><b id="sYes">0</b><span>Hadir</span></div><div><b id="sPax">0</b><span>Total orang hadir</span></div><div><b id="sNo">0</b><span>Tidak hadir</span></div><div><b id="sMaybe">0</b><span>Masih ragu</span></div></div>
+
+  <section><h2>Daftar RSVP</h2>
+    <div class="bar"><input id="q" placeholder="Cari nama / ucapan..."><select id="f"><option value="">Semua status</option><option>Hadir</option><option>Tidak Hadir</option><option>Masih Ragu</option></select></div>
+    <div class="scroll"><table><thead><tr><th>Waktu</th><th>Nama</th><th>Status</th><th>Jml</th><th>Ucapan</th><th></th></tr></thead><tbody id="rows"></tbody></table></div></section>
+
+  <section><h2>Generator Link Tamu</h2>
+    <p>Tempel satu nama per baris, link personal dibuat otomatis (nama tampil di cover undangan).</p>
+    <label>URL undangan <input id="base" placeholder="https://domain-anda.vercel.app/"></label>
+    <textarea id="names" rows="5" placeholder="Budi Santoso&#10;Keluarga Bpk. Ahmad&#10;Siti & Partner"></textarea>
+    <button id="gen">Buat Link</button><div class="scroll"><table><tbody id="links"></tbody></table></div></section>
+</div>
+<script src="admin.js"></script></body></html>
