@@ -7,12 +7,12 @@ assets/css/style.css  tampilan          assets/js/config.js  ← SEMUA data died
 assets/js/app.js      logika            assets/img/          foto (sudah di-crop & kompres)
 api/                  backend Vercel (rsvp.js, admin.js, _store.js)
 admin/                dashboard RSVP (buka /admin)
-server.js             server lokal untuk testing (tanpa install apa pun)
+local-server.js      server lokal untuk testing (JANGAN dinamai server.js: Vercel akan salah mengira itu aplikasinya)
 data/rsvp.json        database lokal (hanya saat testing)
 ```
 
 ## Jalankan di VS Code (Mac)
-Buka folder → Terminal → `node server.js` (atau `npm start`) lalu buka:
+Buka folder → Terminal → `node local-server.js` (atau `npm start`) lalu buka:
 - Undangan: http://localhost:3000/?to=Budi+Santoso
 - Admin: http://localhost:3000/admin/  (password default `admin123`, ubah via file `.env`, salin dari `.env.example`)
 
