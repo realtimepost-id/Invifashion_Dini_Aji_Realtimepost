@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
-<title>Admin · Undangan Aji & Dini</title><link rel="stylesheet" href="/admin/admin.css"></head>
+<title>Admin · Undangan Aji & Dini</title><link rel="stylesheet" href="/admin/admin.css?v=25"></head>
 <body>
 <div id="login" class="box"><h1>Admin Undangan</h1><p>Aji &amp; Dini</p>
-  <input id="pw" type="password" placeholder="Password admin" autocomplete="current-password"><label style="font-size:.85rem;text-align:left"><input type="checkbox" id="showpw" style="width:auto"> Tampilkan password</label><button id="loginBtn">Masuk</button><small id="err"></small></div>
+  <input id="pw" class="mask" type="text" placeholder="Password admin" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false"><label style="font-size:.85rem;text-align:left"><input type="checkbox" id="showpw" style="width:auto"> Tampilkan password</label><small id="cnt">Terketik: 0 karakter</small><button id="loginBtn">Masuk</button><small id="err"></small><small style="color:#aaa">admin v2.5</small></div>
 
 <div id="app" hidden>
   <header><h1>Dashboard RSVP</h1><div><button id="refresh">⟳ Muat ulang</button><button id="csv">⬇ Export CSV (Excel/Sheets)</button><button id="out">Keluar</button></div></header>
@@ -27,4 +27,4 @@
     <small>Catatan: WhatsApp tidak mengizinkan kirim massal otomatis tanpa API berbayar. Tombol "Kirim WA" membuka chat dengan pesan siap kirim; Anda tinggal menekan Send, lalu tamu otomatis ditandai terkirim.</small>
   </section>
 </div>
-<script src="/admin/admin.js"></script></body></html>
+<script src="/admin/admin.js?v=25"></script></body></html>

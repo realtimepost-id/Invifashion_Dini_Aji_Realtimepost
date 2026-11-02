@@ -3,8 +3,8 @@ let key = sessionStorage.getItem('adm') || '', items = [];
 const api = (path = '', opt = {}) => fetch('/api/admin' + path, { ...opt, headers: { 'x-admin-key': key } });
 
 async function load() {
-  const r = await api(); const d = await r.json();
-  if (!r.ok) { sessionStorage.removeItem('adm'); $('#login').hidden = false; $('#app').hidden = true; $('#err').textContent = d.error || 'Gagal'; return false; }
+  let r, d; try { r = await api(); d = await r.json(); } catch (e) { $('#err').textContent = 'Tidak bisa terhubung ke server: ' + e.message; return false; }
+  if (!r.ok) { sessionStorage.removeItem('adm'); $('#login').hidden = false; $('#app').hidden = true; $('#err').textContent = (d.error || 'Gagal') + ' (kode ' + r.status + ')'; return false; }
   items = d.items; $('#login').hidden = true; $('#app').hidden = false;
   const local = ['localhost', '127.0.0.1'].includes(location.hostname);
   $('#mode').textContent = d.mode === 'upstash' ? '✅ Penyimpanan: Upstash Redis (online)' : local ? 'Penyimpanan: file lokal data/' : '⚠️ Upstash BELUM terhubung — data tidak akan tersimpan. Hubungkan Upstash lalu Redeploy.';
@@ -19,7 +19,8 @@ function draw() {
     `<tr><td>${new Date(i.time).toLocaleString('id-ID', { dateStyle: 'short', timeStyle: 'short' })}</td><td><b>${esc(i.name)}</b></td><td><span class="tag ${i.status === 'Tidak Hadir' ? 'no' : i.status === 'Masih Ragu' ? 'ra' : ''}">${esc(i.status)}</span></td><td>${i.qty || ''}</td><td>${esc(i.wish)}</td><td><button class="del" data-id="${esc(i.id)}">Hapus</button></td></tr>`).join('') || '<tr><td colspan="6">Belum ada data.</td></tr>';
 }
 $('#loginBtn').onclick = async () => { key = $('#pw').value.trim(); if (!key) { $('#err').textContent = 'Ketik password dulu'; return; } $('#err').textContent = ''; sessionStorage.setItem('adm', key); await load(); };
-$('#showpw').onchange = e => $('#pw').type = e.target.checked ? 'text' : 'password';
+$('#showpw').onchange = e => $('#pw').classList.toggle('show', e.target.checked);
+$('#pw').oninput = e => $('#cnt').textContent = 'Terketik: ' + e.target.value.length + ' karakter';
 $('#pw').onkeydown = e => e.key === 'Enter' && $('#loginBtn').click();
 $('#refresh').onclick = load; $('#q').oninput = $('#f').onchange = draw;
 $('#out').onclick = () => { sessionStorage.removeItem('adm'); location.reload(); };

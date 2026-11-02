@@ -12,3 +12,5 @@ section{background:#fff;border-radius:16px;padding:20px;margin:16px auto;box-sha
 th,td{padding:9px 8px;border-bottom:1px solid #eee;text-align:left;vertical-align:top}th{background:#faf7f0;color:#3E4F41;position:sticky;top:0}
 .tag{padding:2px 9px;border-radius:20px;font-size:.75rem;background:#E6EFE6;color:#2f6b3a}.tag.no{background:#F6E4E0;color:#a8483a}.tag.ra{background:#F5EFD9;color:#8a6d1f}
 .del{background:#c0594a;padding:5px 10px}small{color:#888}#err{color:#c0594a}
+
+.mask{-webkit-text-security:disc}.mask.show{-webkit-text-security:none}#cnt{color:#666}
